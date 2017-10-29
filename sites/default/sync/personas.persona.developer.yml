@@ -1,0 +1,8 @@
+uuid: 5362cd09-3306-4d4c-807e-a02b786354d7
+langcode: en
+status: true
+dependencies: {  }
+id: developer
+label: Developer
+roles:
+  administrator: administrator

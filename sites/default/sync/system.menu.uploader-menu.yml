@@ -1,0 +1,8 @@
+uuid: 5a0b9109-ae97-4541-af9b-e834694d57ac
+langcode: en
+status: true
+dependencies: {  }
+id: uploader-menu
+label: 'Uploader Menu'
+description: 'Gender Report Uploader Menu'
+locked: false

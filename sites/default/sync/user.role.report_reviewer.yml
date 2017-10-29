@@ -1,0 +1,10 @@
+uuid: a3531ae1-d382-4f88-b393-5cdb0af57a08
+langcode: en
+status: true
+dependencies: {  }
+id: report_reviewer
+label: 'Report Reviewer'
+weight: 4
+is_admin: null
+permissions:
+  - 'edit any gender_reports content'

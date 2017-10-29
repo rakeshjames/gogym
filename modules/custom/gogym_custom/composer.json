@@ -1,0 +1,14 @@
+{
+  "name": "drupal/gogym_custom",
+  "type": "drupal-module",
+  "description": "Gugym customisation.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/gogym_custom",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/gogym_custom",
+    "source": "http://cgit.drupalcode.org/gogym_custom"
+  },
+  "require": { }
+}

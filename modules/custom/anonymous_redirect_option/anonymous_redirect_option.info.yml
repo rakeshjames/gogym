@@ -1,0 +1,5 @@
+name: Anonymous redirect option.
+type: module
+description: This module provides the redirect options to a particular url, while the user is not logged in or anonymous.
+core: 8.x
+package: Users

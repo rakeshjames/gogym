@@ -1,0 +1,14 @@
+uuid: ad5b5232-034f-46b9-9b58-f234a1be8e9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.report_reviewer
+  module:
+    - user
+id: user_remove_role_action.report_reviewer
+label: 'Remove the Report Reviewer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: report_reviewer

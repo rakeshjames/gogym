@@ -1,0 +1,22 @@
+uuid: de9309f8-4aa0-4ccc-84ce-0bbd30fa526f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.gender_reports
+id: node.gender_reports.promote
+field_name: promote
+entity_type: node
+bundle: gender_reports
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

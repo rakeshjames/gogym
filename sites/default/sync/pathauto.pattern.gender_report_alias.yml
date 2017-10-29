@@ -1,0 +1,22 @@
+uuid: b71a5aea-e5dc-4ce2-9169-f6650493bef2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: gender_report_alias
+label: 'Gender Report alias'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  73c35e1d-be3d-4c50-8e39-17676d2aab3d:
+    id: node_type
+    bundles:
+      gender_reports: gender_reports
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 73c35e1d-be3d-4c50-8e39-17676d2aab3d
+selection_logic: and
+weight: -5
+relationships: {  }

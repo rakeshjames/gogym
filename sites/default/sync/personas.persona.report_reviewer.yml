@@ -1,0 +1,10 @@
+uuid: 7a873421-1215-4818-852c-9fd55fcf3882
+langcode: en
+status: true
+dependencies: {  }
+id: report_reviewer
+label: 'Report Reviewer'
+roles:
+  report_reviewer: report_reviewer
+  administrator: '0'
+  report_uploader: '0'

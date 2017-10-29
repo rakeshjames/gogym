@@ -1,0 +1,27 @@
+uuid: fe35f852-82c5-4383-b702-6196799135b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_promotion_type
+field_name: field_promotion_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: male_only_boxing
+      label: 'Male only boxing'
+    -
+      value: female_only_zumba
+      label: 'Female only Zumba'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

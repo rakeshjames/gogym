@@ -1,0 +1,23 @@
+uuid: 352d8e31-a25d-40a8-b2f8-c1c898165f6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_females
+    - node.type.gender_reports
+id: node.gender_reports.field_number_of_females
+field_name: field_number_of_females
+entity_type: node
+bundle: gender_reports
+label: 'Number of Females'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

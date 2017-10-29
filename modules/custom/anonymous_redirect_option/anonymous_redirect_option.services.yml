@@ -1,0 +1,7 @@
+services:
+  anonymous_redirect_option.request_redirect:
+    class: Drupal\anonymous_redirect_option\EventSubscriber\AnonymousRedirectOptSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+

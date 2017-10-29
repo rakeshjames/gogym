@@ -1,0 +1,10 @@
+uuid: 884759a5-8867-48d2-9743-82e22c3c662f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j_gyr_c3o1zKZyCBSORNNGlu68oKSyJ80oMybp7nHok
+id: clean_blog_header_image_block
+label: 'Clean Blog Header Image Block'
+revision: 0
+description: 'This block will provide the settings to configure the Header Banner images for the pages. '

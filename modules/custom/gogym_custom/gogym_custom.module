@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * @file
+ * Contains gogym_custom.module.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function gogym_custom_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the gogym_custom module.
+    case 'help.page.gogym_custom':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Gugym customisation.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function gogym_custom_theme() {
+  return [
+    'name_lists_formatter' => [
+      'variables' => [
+        'names' => null,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ * form_id is node_gender_reports_form
+ */
+function gogym_custom_form_node_gender_reports_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if (in_array('report_uploader', \Drupal::currentUser()->getRoles())) {
+
+    // Making the No Males and No of Females are disabled. Because it has to be updated by Reviewer.
+    $form['field_number_of_males']['widget'][0]['#disabled'] = TRUE;
+    $form['field_number_of_females']['widget'][0]['#disabled'] = TRUE;
+
+    // Making the Reviewed by abd Reviewed on fields are not edittable fron ui, becuase its autopopulated.
+    $form['field_reviewed_on']['widget'][0]['#disabled'] = TRUE;
+    $form['field_reviewed_by']['widget'][0]['#disabled'] = TRUE;
+  }
+}
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ * form id is node_gender_reports_edit
+ */
+function gogym_custom_form_node_gender_reports_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if (!(in_array('report_reviewer', \Drupal::currentUser()->getRoles())) &&
+    (in_array('report_uploader', \Drupal::currentUser()->getRoles()))) {
+
+    // Making the No Males and No of Females are disabled. Because it has to be updated by Reviewer.
+    $form['field_number_of_males']['widget'][0]['#disabled'] = TRUE;
+    $form['field_number_of_females']['widget'][0]['#disabled'] = TRUE;
+  }
+
+  // Making the Reviewed by abd Reviewed on fields are not edittable fron ui, becuase its autopopulated.
+  $form['field_reviewed_on']['widget'][0]['#disabled'] = TRUE;
+  $form['field_reviewed_by']['widget'][0]['#disabled'] = TRUE;
+
+  // Setting value for Reviewed by field.
+  // Checking the current loggedin user having reviewer Role.
+  if (in_array('report_reviewer', \Drupal::currentUser()->getRoles())) {
+    // Making the number of male field required while reviewer updating.
+    $form['field_number_of_males']['widget'][0]['value']['#required'] = TRUE;
+    // Making the number of female field required while reviewer updating.
+    $form['field_number_of_females']['widget'][0]['value']['#required'] = TRUE;
+
+    $form['field_reviewed_on']['widget'][0]['value']['#default_value'] = DrupalDateTime::createFromTimestamp(time());
+
+    // Automatically populating the reviewed by field.
+    $reviewer_id = \Drupal::currentUser()->id();
+    $reviewer = \Drupal::entityTypeManager()->getStorage('user')->load($reviewer_id);
+    $form['field_reviewed_by']['widget'][0]['target_id']['#default_value'] = $reviewer;
+
+  }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function gogym_custom_node_presave(EntityInterface $entity) {
+
+  switch ($entity->getType()) {
+    case "gender_reports":
+      $no_males = $entity->get('field_number_of_males')->getValue()[0]['value'];
+      $no_females = $entity->get('field_number_of_females')->getValue()[0]['value'];
+      if ($no_males >5 || $no_females > 5) {
+        update_gender_promotion($entity, $no_males, $no_females);
+      }
+      else {
+        $entity->set('field_promotion_type', []);
+      }
+      break;
+    default:
+      break;
+  }
+
+}
+
+/**
+ * Helper callback to update the promotion.
+ */
+function update_gender_promotion(EntityInterface $entity, $no_males, $no_females) {
+  if ($no_males > 5 && $no_females > 5) {
+    $entity->set('field_promotion_type', ['male_only_boxing', 'female_only_zumba']);
+  }
+  elseif ($no_males > 5) {
+    $entity->set('field_promotion_type', ['male_only_boxing']);
+  }
+  elseif ($no_females > 5) {
+    $entity->set('field_promotion_type',['female_only_zumba']);
+  }
+}

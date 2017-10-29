@@ -1,0 +1,27 @@
+uuid: 1b7f077a-ffbf-4487-9845-c69213af5dff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_name_list_csv
+    - node.type.gender_reports
+  module:
+    - file
+id: node.gender_reports.field_name_list_csv
+field_name: field_name_list_csv
+entity_type: node
+bundle: gender_reports
+label: 'Name List CSV'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'gogym-[date:custom:Y]-[date:custom:m]'
+  file_extensions: csv
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

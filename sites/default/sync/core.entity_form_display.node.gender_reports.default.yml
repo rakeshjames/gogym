@@ -1,0 +1,72 @@
+uuid: 2a33a23d-4243-4556-b94c-6e115970efad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.gender_reports.field_name_list_csv
+    - field.field.node.gender_reports.field_number_of_females
+    - field.field.node.gender_reports.field_number_of_males
+    - field.field.node.gender_reports.field_promotion_type
+    - field.field.node.gender_reports.field_reviewed_by
+    - field.field.node.gender_reports.field_reviewed_on
+    - node.type.gender_reports
+  module:
+    - datetime
+    - file
+id: node.gender_reports.default
+targetEntityType: node
+bundle: gender_reports
+mode: default
+content:
+  field_name_list_csv:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_number_of_females:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_number_of_males:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_reviewed_by:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_reviewed_on:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_promotion_type: true
+  path: true
+  promote: true
+  status: true
+  sticky: true
+  uid: true

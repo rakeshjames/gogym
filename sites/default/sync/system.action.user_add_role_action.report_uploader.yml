@@ -1,0 +1,14 @@
+uuid: 8dd20078-b14e-48cb-af6e-ac002c5f1943
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.report_uploader
+  module:
+    - user
+id: user_add_role_action.report_uploader
+label: 'Add the Report Uploader role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: report_uploader

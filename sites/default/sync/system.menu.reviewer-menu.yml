@@ -1,0 +1,8 @@
+uuid: e9c38635-b8ee-4825-97f9-722712ad0513
+langcode: en
+status: true
+dependencies: {  }
+id: reviewer-menu
+label: 'Reviewer Menu'
+description: 'Gender Report Reviewer Menu'
+locked: false

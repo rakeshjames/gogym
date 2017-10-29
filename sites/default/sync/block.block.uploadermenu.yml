@@ -1,0 +1,32 @@
+uuid: e4f6e6d0-2cd3-46c9-8406-47799a02af12
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.uploader-menu
+  module:
+    - system
+    - user
+  theme:
+    - bootstrap_business
+id: uploadermenu
+theme: bootstrap_business
+region: header_top_left
+weight: -4
+provider: null
+plugin: 'system_menu_block:uploader-menu'
+settings:
+  id: 'system_menu_block:uploader-menu'
+  label: 'Uploader Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      report_uploader: report_uploader
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

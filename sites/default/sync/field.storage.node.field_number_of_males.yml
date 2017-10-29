@@ -1,0 +1,20 @@
+uuid: df8bb0c6-1c31-4bfd-81f6-f058280f4a01
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_number_of_males
+field_name: field_number_of_males
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,24 @@
+uuid: 7eb51949-85bb-4ef0-b358-2f191b52b5fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.gender_reports
+  module:
+    - user
+id: node.gender_reports.teaser
+targetEntityType: node
+bundle: gender_reports
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_name_list_csv: true
+  field_number_of_females: true
+  field_number_of_males: true
+  field_promotion_type: true
+  field_reviewed_by: true
+  field_reviewed_on: true

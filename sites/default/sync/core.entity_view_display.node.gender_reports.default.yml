@@ -1,0 +1,77 @@
+uuid: 55371d11-6181-4d72-a1b3-ba6690453724
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.gender_reports.field_name_list_csv
+    - field.field.node.gender_reports.field_number_of_females
+    - field.field.node.gender_reports.field_number_of_males
+    - field.field.node.gender_reports.field_promotion_type
+    - field.field.node.gender_reports.field_reviewed_by
+    - field.field.node.gender_reports.field_reviewed_on
+    - node.type.gender_reports
+  module:
+    - datetime
+    - gogym_custom
+    - options
+    - user
+id: node.gender_reports.default
+targetEntityType: node
+bundle: gender_reports
+mode: default
+content:
+  field_name_list_csv:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: name_list_csv_formatter
+    region: content
+  field_number_of_females:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_number_of_males:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_promotion_type:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_reviewed_by:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_reviewed_on:
+    weight: 4
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

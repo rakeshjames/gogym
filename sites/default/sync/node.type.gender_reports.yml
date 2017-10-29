@@ -1,0 +1,17 @@
+uuid: 6a3c91d4-329b-42fd-a4f0-b62b6dfe9384
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Gender Reports'
+type: gender_reports
+description: ' Record the number customers by gender on a gym by gym basis, the data will be used for marketing analysis for gender-driven promotions. The gender data will need to be imported by a Report Uploader into a Gender Report specific to each gym.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

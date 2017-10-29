@@ -1,0 +1,14 @@
+uuid: 39ef9e45-05ae-4f20-8e41-aeb68be23c43
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.report_reviewer
+  module:
+    - user
+id: user_add_role_action.report_reviewer
+label: 'Add the Report Reviewer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: report_reviewer

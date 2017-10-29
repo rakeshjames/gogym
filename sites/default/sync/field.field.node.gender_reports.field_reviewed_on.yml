@@ -1,0 +1,21 @@
+uuid: 1741ca6e-ab9b-458d-bcee-3da57831163a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_reviewed_on
+    - node.type.gender_reports
+  module:
+    - datetime
+id: node.gender_reports.field_reviewed_on
+field_name: field_reviewed_on
+entity_type: node
+bundle: gender_reports
+label: 'Reviewed On'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

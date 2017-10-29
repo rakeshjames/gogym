@@ -1,0 +1,14 @@
+{
+  "name": "drupal/anonymous_redirect_option",
+  "type": "drupal-module",
+  "description": "This module provides the redirect options to a particular url, while the user is not logged in or anonymous.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/anonymous_redirect_option",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/anonymous_redirect_option",
+    "source": "http://cgit.drupalcode.org/anonymous_redirect_option"
+  },
+  "require": { }
+}

@@ -1,0 +1,9 @@
+uuid: 45caa8c2-5018-4693-898f-ecec1e864068
+langcode: en
+status: true
+dependencies: {  }
+id: report_uploader
+label: 'Report Uploader'
+roles:
+  report_uploader: report_uploader
+  administrator: '0'

@@ -1,0 +1,20 @@
+uuid: b7ee329b-6001-4691-b948-6c9ead85d403
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_number_of_females
+field_name: field_number_of_females
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

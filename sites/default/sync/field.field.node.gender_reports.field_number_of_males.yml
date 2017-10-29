@@ -1,0 +1,23 @@
+uuid: cc65895a-6eca-4ccd-82fd-e82984f51141
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_males
+    - node.type.gender_reports
+id: node.gender_reports.field_number_of_males
+field_name: field_number_of_males
+entity_type: node
+bundle: gender_reports
+label: 'Number of Males'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

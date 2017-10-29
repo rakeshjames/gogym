@@ -1,0 +1,18 @@
+uuid: 49d0bf77-fa4c-4d03-add6-1076715d116d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.gender_reports
+id: node.gender_reports.title
+field_name: title
+entity_type: node
+bundle: gender_reports
+label: 'Gym Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

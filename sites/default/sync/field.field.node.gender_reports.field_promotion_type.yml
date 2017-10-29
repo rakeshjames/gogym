@@ -1,0 +1,21 @@
+uuid: 0325e1e0-a6d3-4224-9aaf-dad2231bf609
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_promotion_type
+    - node.type.gender_reports
+  module:
+    - options
+id: node.gender_reports.field_promotion_type
+field_name: field_promotion_type
+entity_type: node
+bundle: gender_reports
+label: 'Promotion Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

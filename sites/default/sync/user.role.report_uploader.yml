@@ -1,0 +1,11 @@
+uuid: f95ea080-5dc1-4c92-a3ff-567e4e59f14d
+langcode: en
+status: true
+dependencies: {  }
+id: report_uploader
+label: 'Report Uploader'
+weight: 3
+is_admin: null
+permissions:
+  - 'create gender_reports content'
+  - 'edit own gender_reports content'

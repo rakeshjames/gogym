@@ -1,0 +1,14 @@
+uuid: 57fbcb85-8d0f-4c74-a333-a2272d1cc0a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.report_uploader
+  module:
+    - user
+id: user_remove_role_action.report_uploader
+label: 'Remove the Report Uploader role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: report_uploader

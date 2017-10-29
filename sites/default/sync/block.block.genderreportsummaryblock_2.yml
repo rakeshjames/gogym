@@ -1,0 +1,28 @@
+uuid: 05743bec-083c-40f0-9fca-b7bbc1b15a26
+langcode: en
+status: true
+dependencies:
+  module:
+    - gogym_custom
+    - user
+  theme:
+    - bootstrap_business
+id: genderreportsummaryblock_2
+theme: bootstrap_business
+region: sidebar_second
+weight: 0
+provider: null
+plugin: gender_report_summary_block
+settings:
+  id: gender_report_summary_block
+  label: 'Gender report summary block'
+  provider: gogym_custom
+  label_display: visible
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

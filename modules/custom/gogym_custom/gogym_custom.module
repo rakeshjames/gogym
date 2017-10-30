@@ -54,7 +54,7 @@ function gogym_custom_form_node_gender_reports_form_alter(&$form, FormStateInter
       'field_reviewed_on',
       'field_reviewed_by',
     ];
-    diable_fields($field_ids, $form);
+    disable_fields($field_ids, $form);
   }
 }
 
@@ -69,13 +69,13 @@ function gogym_custom_form_node_gender_reports_edit_form_alter(&$form, FormState
     // Making the No Males and No of Females are disabled.
     // Because it has to be updated by Reviewer.
     $field_ids = ['field_number_of_males', 'field_number_of_females'];
-    diable_fields($field_ids, $form);
+    disable_fields($field_ids, $form);
 
   }
 
   // Making the Reviewed by and Reviewed on fields are not edittable.
   $field_ids = ['field_reviewed_on', 'field_reviewed_by'];
-  diable_fields($field_ids, $form);
+  disable_fields($field_ids, $form);
 
   // Setting value for Reviewed by field.
   // Checking the current loggedin user having reviewer Role.
@@ -97,9 +97,9 @@ function gogym_custom_form_node_gender_reports_edit_form_alter(&$form, FormState
 }
 
 /**
- * Helper function to diable the the form field.
+ * Helper function to disable the the form field.
  */
-function diable_fields($field_ids, &$form) {
+function disable_fields($field_ids, &$form) {
   foreach ($field_ids as $field) {
     $form[$field]['widget'][0]['#disabled'] = TRUE;
   }

@@ -4,6 +4,7 @@ namespace Drupal\gogym_custom\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Datetime\DateFormatter;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\Core\Link;
 use Drupal\Core\Entity\EntityTypeManager;
@@ -28,6 +29,13 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
   protected $entityTypeManager;
 
   /**
+   * Drupal\Core\Datetime\DateFormatter definition
+   *
+   * @var \Drupal\Core\Datetime\DateFormatter
+   */
+  protected $dateFormatter;
+
+  /**
    * Constructs a new GenderReportSummaryBlock object.
    *
    * @param array $configuration
@@ -41,10 +49,12 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
         array $configuration,
         $plugin_id,
         $plugin_definition,
-        EntityTypeManager $entity_type_manager
+        EntityTypeManager $entity_type_manager,
+        DateFormatter $date_formatter
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entity_type_manager;
+    $this->dateFormatter = $date_formatter;
   }
 
   /**
@@ -55,7 +65,8 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('date.formatter')
     );
   }
   /**
@@ -111,7 +122,7 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
       $promotions = $not_reviewed;
     }
 
-    // Get the Rebiewed by user
+    // Get the Reviewed by user
     if (isset($report->get('field_reviewed_by')->getValue()[0]['target_id'])) {
       $reviewed_by_id = $report->get('field_reviewed_by')->getValue()[0]['target_id'];
       $reviewer = $this->entityTypeManager->getStorage('user')->load($reviewed_by_id)->getUsername();
@@ -125,12 +136,12 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
     // Reviewed time.
     if (isset($report->get('field_reviewed_on')->getValue()[0]['value'])) {
       $reviewed_on_date = $report->get('field_reviewed_on')->getValue()[0]['value'];
-      $reviewed_on = format_date(strtotime($reviewed_on_date), "long");
+      $reviewed_on = $this->dateFormatter->format(strtotime($reviewed_on_date), "long");
     }
     else {
       $reviewed_on = $not_reviewed;
     }
-
+    // Preparing each row on the table.
     $row = [$gym_name, $promotions , $reviewed_by, $reviewed_on];
 
     return $row;

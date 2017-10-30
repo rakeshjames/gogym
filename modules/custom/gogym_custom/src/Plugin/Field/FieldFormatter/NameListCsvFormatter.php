@@ -73,6 +73,7 @@ class NameListCsvFormatter extends FormatterBase {
       fclose($handler);
 
       $elements[$delta] = [
+        // Using custom theme and templating, because core-theme 'item_list' is not looking nice for me in this context.
         '#theme' => 'name_lists_formatter',
         '#names' => $first_name,
       ];

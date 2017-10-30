@@ -65,8 +65,8 @@ class ReportsToReview extends ControllerBase {
     }
 
     return [
-      '#theme' => 'name_lists_formatter',
-      '#names' => $reports,
+      '#theme' => 'item_list',
+      '#items' => $reports,
     ];
   }
 

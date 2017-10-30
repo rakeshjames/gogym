@@ -1,10 +1,15 @@
-
 gogym_custom.reports_to_review_reviewlists:
   path: '/reports/review'
   defaults:
     _controller: '\Drupal\gogym_custom\Controller\ReportsToReview::reviewlists'
     _title: 'List of Gender Reports to be Reviewed'
   requirements:
-    _role: 'report_reviewer'
-
-
+    _role: 'report_reviewer, administrator'
+gogym_custom.reports:
+  path: '/reports'
+  requirements:
+    _permission: 'access content'
+gogym_custom.add_reports:
+  path: '/node/add/gender_reports'
+  requirements:
+    _role: 'report_uploader, administrator'

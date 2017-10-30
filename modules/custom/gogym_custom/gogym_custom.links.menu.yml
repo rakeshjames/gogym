@@ -1,0 +1,21 @@
+gogym_custom.reports_to_review_reviewlists:
+  title: 'To Review'
+  weight: 1
+  route_name: gogym_custom.reports_to_review_reviewlists
+  menu_name: reviewer-menu
+gogym_custom.reviewer_home:
+  title: 'Home'
+  weight: 0
+  route_name: gogym_custom.reports
+  menu_name: reviewer-menu
+gogym_custom.uploader_home:
+  title: 'Home'
+  weight: 0
+  route_name: gogym_custom.reports
+  menu_name: uploader-menu
+gogym_custom.uploade_gender_report:
+  title: 'Upload new Gender Report'
+  weight: 1
+  route_name: gogym_custom.add_reports
+  menu_name: uploader-menu
+

@@ -789,14 +789,4 @@ $config_directories['sync'] = 'sites/default/sync';
 
 
 
-$databases['default']['default'] = array (
-  'database' => 'gy',
-  'username' => 'root',
-  'password' => '',
-  'prefix' => '',
-  'host' => 'localhost',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-$settings['install_profile'] = 'config_installer';
+

@@ -33,7 +33,7 @@ function gogym_custom_theme() {
   return [
     'name_lists_formatter' => [
       'variables' => [
-        'names' => null,
+        'names' => NULL,
       ],
     ],
   ];
@@ -41,40 +41,41 @@ function gogym_custom_theme() {
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
- * form_id is node_gender_reports_form
  */
 function gogym_custom_form_node_gender_reports_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   if (in_array('report_uploader', \Drupal::currentUser()->getRoles())) {
 
-    // Making the No Males and No of Females are disabled. Because it has to be updated by Reviewer.
-    $form['field_number_of_males']['widget'][0]['#disabled'] = TRUE;
-    $form['field_number_of_females']['widget'][0]['#disabled'] = TRUE;
-
-    // Making the Reviewed by abd Reviewed on fields are not edittable fron ui, becuase its autopopulated.
-    $form['field_reviewed_on']['widget'][0]['#disabled'] = TRUE;
-    $form['field_reviewed_by']['widget'][0]['#disabled'] = TRUE;
+    // Making the No Males and No of Females are disabled.
+    // Making the Reviewed by and Reviewed on fields are not edittable.
+    $field_ids = [
+      'field_number_of_males',
+      'field_number_of_females',
+      'field_reviewed_on',
+      'field_reviewed_by',
+    ];
+    diable_fields($field_ids, $form);
   }
 }
 
-
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
- * form id is node_gender_reports_edit
  */
 function gogym_custom_form_node_gender_reports_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   if (!(in_array('report_reviewer', \Drupal::currentUser()->getRoles())) &&
     (in_array('report_uploader', \Drupal::currentUser()->getRoles()))) {
 
-    // Making the No Males and No of Females are disabled. Because it has to be updated by Reviewer.
-    $form['field_number_of_males']['widget'][0]['#disabled'] = TRUE;
-    $form['field_number_of_females']['widget'][0]['#disabled'] = TRUE;
+    // Making the No Males and No of Females are disabled.
+    // Because it has to be updated by Reviewer.
+    $field_ids = ['field_number_of_males', 'field_number_of_females'];
+    diable_fields($field_ids, $form);
+
   }
 
-  // Making the Reviewed by abd Reviewed on fields are not edittable fron ui, becuase its autopopulated.
-  $form['field_reviewed_on']['widget'][0]['#disabled'] = TRUE;
-  $form['field_reviewed_by']['widget'][0]['#disabled'] = TRUE;
+  // Making the Reviewed by and Reviewed on fields are not edittable.
+  $field_ids = ['field_reviewed_on', 'field_reviewed_by'];
+  diable_fields($field_ids, $form);
 
   // Setting value for Reviewed by field.
   // Checking the current loggedin user having reviewer Role.
@@ -96,6 +97,15 @@ function gogym_custom_form_node_gender_reports_edit_form_alter(&$form, FormState
 }
 
 /**
+ * Helper function to diable the the form field.
+ */
+function diable_fields($field_ids, &$form) {
+  foreach ($field_ids as $field) {
+    $form[$field]['widget'][0]['#disabled'] = TRUE;
+  }
+}
+
+/**
  * Implements hook_ENTITY_TYPE_presave().
  */
 function gogym_custom_node_presave(EntityInterface $entity) {
@@ -104,15 +114,17 @@ function gogym_custom_node_presave(EntityInterface $entity) {
     case "gender_reports":
       $no_males = $entity->get('field_number_of_males')->getValue()[0]['value'];
       $no_females = $entity->get('field_number_of_females')->getValue()[0]['value'];
-      if ($no_males >5 || $no_females > 5) {
+      if (($no_males > 5) || ($no_females > 5)) {
         update_gender_promotion($entity, $no_males, $no_females);
       }
       else {
         $entity->set('field_promotion_type', []);
       }
       break;
+
     default:
       break;
+
   }
 
 }
@@ -128,6 +140,6 @@ function update_gender_promotion(EntityInterface $entity, $no_males, $no_females
     $entity->set('field_promotion_type', ['male_only_boxing']);
   }
   elseif ($no_females > 5) {
-    $entity->set('field_promotion_type',['female_only_zumba']);
+    $entity->set('field_promotion_type', ['female_only_zumba']);
   }
 }

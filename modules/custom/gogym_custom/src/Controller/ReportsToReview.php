@@ -39,14 +39,14 @@ class ReportsToReview extends ControllerBase {
   /**
    * Review lists.
    *
-   * @return string
-   *   Return Hello string.
+   * @return array
+   *   Renderabale array.
    */
   public function reviewlists() {
-    // Get all  non reviewed gender reports
+    // Get all  non reviewed gender reports.
     $query = $this->database->select('node_field_data', 'nfd');
-    $query->fields('nfd',['nid', 'title']);
-    $query->leftJoin('node__field_reviewed_by', 'nfrb','nfd.nid = nfrb.entity_id');
+    $query->fields('nfd', ['nid', 'title']);
+    $query->leftJoin('node__field_reviewed_by', 'nfrb', 'nfd.nid = nfrb.entity_id');
     $query->fields('nfrb', ['field_reviewed_by_target_id']);
     $query->condition('nfd.type', 'gender_reports', '=');
     $query->isNull('nfrb.field_reviewed_by_target_id');
@@ -60,7 +60,7 @@ class ReportsToReview extends ControllerBase {
     if (empty($reports)) {
       return [
         '#type' => 'markup',
-        '#markup' => $this->t('No Gender Reports are there to Review.')
+        '#markup' => $this->t('No Gender Reports are there to Review.'),
       ];
     }
 

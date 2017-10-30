@@ -2,12 +2,9 @@
 
 namespace Drupal\gogym_custom\Plugin\Field\FieldFormatter;
 
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 /**
  * Plugin implementation of the 'name_list_csv_formatter' formatter.
@@ -46,7 +43,6 @@ class NameListCsvFormatter extends FormatterBase {
   public function settingsSummary() {
     $summary = [];
     // Implement settings summary.
-
     return $summary;
   }
 
@@ -66,14 +62,15 @@ class NameListCsvFormatter extends FormatterBase {
       while (($csv_content = fgetcsv($handler))) {
         $first_name[] = $csv_content[0];
       }
-      // skipping the header from the array.
+      // Skipping the header from the array.
       unset($first_name[0]);
 
       // Closing the file.
       fclose($handler);
 
       $elements[$delta] = [
-        // Using custom theme and templating, because core-theme 'item_list' is not looking nice for me in this context.
+        // Using custom theme and templating,
+        // Because core-theme 'item_list' is not looking nice for me.
         '#theme' => 'name_lists_formatter',
         '#names' => $first_name,
       ];

@@ -29,7 +29,7 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
   protected $entityTypeManager;
 
   /**
-   * Drupal\Core\Datetime\DateFormatter definition
+   * Drupal\Core\Datetime\DateFormatter definition.
    *
    * @var \Drupal\Core\Datetime\DateFormatter
    */
@@ -69,6 +69,7 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
       $container->get('date.formatter')
     );
   }
+
   /**
    * {@inheritdoc}
    */
@@ -84,9 +85,8 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
       $data[] = $this->processGenderReport($report, $promo_options);
     }
     $header = ['Gym Name', 'Promotion Type(s)', 'Reviewed By', 'Reviewed On'];
-    $build['gender_report_summary_block'] =  [
+    $build['gender_report_summary_block'] = [
       '#theme' => 'table',
-      //'#caption' => 'Gender Report Summary',
       '#header' => $header,
       '#rows' => $data,
       '#cache' => [
@@ -100,9 +100,10 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
   /**
    * Helper function to process the data-rows for the table.
    *
-   * @param $report object
+   * @param object $report
    *   The individual gender report node object.
-   *
+   * @param array $promo_options
+   *   The field list options.
    */
   public function processGenderReport($report, $promo_options) {
     // Not yet reviewed text.
@@ -122,7 +123,7 @@ class GenderReportSummaryBlock extends BlockBase implements ContainerFactoryPlug
       $promotions = $not_reviewed;
     }
 
-    // Get the Reviewed by user
+    // Get the Reviewed by user.
     if (isset($report->get('field_reviewed_by')->getValue()[0]['target_id'])) {
       $reviewed_by_id = $report->get('field_reviewed_by')->getValue()[0]['target_id'];
       $reviewer = $this->entityTypeManager->getStorage('user')->load($reviewed_by_id)->getUsername();

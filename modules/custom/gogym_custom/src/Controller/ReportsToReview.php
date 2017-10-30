@@ -67,6 +67,9 @@ class ReportsToReview extends ControllerBase {
     return [
       '#theme' => 'item_list',
       '#items' => $reports,
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 

@@ -295,7 +295,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'pDj2NJfY93nuSiEqReZl5Bu9v9DmtqYiC5UUIv1dKUrcjgIIXmG2RE7q0xilRcQIZPHFHfb5sA';
 
 /**
  * Deployment identifier.
@@ -789,3 +789,14 @@ $config_directories['sync'] = 'sites/default/sync';
 
 
 
+$databases['default']['default'] = array (
+  'database' => 'gy',
+  'username' => 'root',
+  'password' => '',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['install_profile'] = 'standard';

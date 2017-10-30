@@ -9,7 +9,3 @@ gogym_custom.reports:
   path: '/reports'
   requirements:
     _permission: 'access content'
-gogym_custom.add_reports:
-  path: '/node/add/gender_reports'
-  requirements:
-    _role: 'report_uploader, administrator'

@@ -13,9 +13,9 @@ gogym_custom.uploader_home:
   weight: 0
   route_name: gogym_custom.reports
   menu_name: uploader-menu
-gogym_custom.uploade_gender_report:
+gogym_custom.uploade_new_gender_report:
   title: 'Upload new Gender Report'
   weight: 1
-  route_name: gogym_custom.add_reports
+  route_name: node.add_page
   menu_name: uploader-menu
 

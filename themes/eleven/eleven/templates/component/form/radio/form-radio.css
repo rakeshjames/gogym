@@ -1,0 +1,96 @@
+/*
+template: form-element--checkbox.html.twig
+*/
+.form-radios {
+  margin: 0.5rem 1rem;
+}
+.form-radios .form-item__description {
+  margin-left: 1rem;
+}
+
+.form-item--radio .form-item__description {
+  max-width: 40rem;
+  margin-left: 2rem;
+}
+
+.radio {
+  position: relative;
+  display: inline-block;
+  margin-right: 0.5rem;
+  line-height: 1.5rem;
+}
+
+/* hide the checkbox and use the label so we can do something with it */
+.form-item--radio input[type=radio] {
+  display: block;
+  height: 0;
+  opacity: 0;
+}
+.radio input[type=radio] + label {
+  position: relative;
+}
+
+.radio .form-item__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid var(--bluesky);
+  border-radius: 1rem;
+  background-color: var(--white);
+}
+
+.radio label .form-item__icon::before {
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+
+          mask-image: url(icons/check.svg);
+  -webkit-mask-image: url(icons/check.svg);
+}
+
+/*--  colors ---------------------------------------------------------*/
+/* default */
+.radio .form-item__icon::before {
+  background-color: var(--white);
+}
+
+/* focus */
+.radio input[type="radio"]:focus + label .form-item__icon {
+    outline: auto 3px var(--bluesky);
+
+}
+.radio input[type="radio"]:focus + label .form-item__icon::before {
+  background-color: var(--white);
+}
+
+/* hover */
+.radio label:hover .form-item__icon,
+.radio input[type="radio"]:hover + label .form-item__icon {
+  border-color: var(--rasberry);
+}
+
+/* checked */
+.radio input[type="radio"]:checked + label .form-item__icon {
+  border-color: var(--bluesky);
+  background-color: var(--bluesky-light);
+}
+
+/* disabled */
+.radio input[type=radio]:disabled + label {
+  border-color: var(--concrete);
+  background-color: var(--concrete-light);
+}
+
+.radio input[type="radio"]:disabled + label .form-item__icon {
+  width: 0.875rem;
+  background-color: var(--gravel);
+
+          mask-image: url(icons/times.svg);
+  -webkit-mask-image: url(icons/times.svg);
+}
+
+.radio input[type=radio]:disabled + label + .checkbox__title label {
+  color: var(--concrete);
+  font-weight: 100;
+}

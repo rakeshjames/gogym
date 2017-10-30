@@ -1,0 +1,17 @@
+{{ attach_library('elevenfeat/form') }}
+
+{%
+  set remove_classes = [
+  'text-full',
+  'form-text',
+  ]
+%}
+
+{% set placeholder = element['#title'] %}
+
+<input
+{{ attributes.
+  removeClass(remove_classes).
+  removeAttribute('size')
+}}
+/>{{ children }}
